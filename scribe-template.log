@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.8.7)  9 AUG 2019 17:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.8.7)  9 AUG 2019 20:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -460,8 +460,56 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen169
 \l_MT_below_shortintertext_sep=\dimen170
 )
-\c@lecnum=\count125
-\c@theorem=\count126
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-berge/tkz-berge.sty
+Package: tkz-berge 2011/06/01 1.00 c tkz-berge for named graphs
+
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-graph/tkz-graph.sty
+Package: tkz-graph 2018/09/19 ctan v 1.00 d base for graphs
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks38
+\XKV@tempa@toks=\toks39
+)
+\XKV@depth=\count125
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
+tex
+File: pgflibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\arrowsize=\dimen171
+))
+\c@tkz@gr@a=\count126
+\c@tkz@gr@b=\count127
+\c@tkz@gr@c=\count128
+\c@tkz@gr@e=\count129
+\c@tkz@gr@d=\count130
+\c@tkz@gr@p=\count131
+\c@tkz@gr@i=\count132
+\c@tkz@gr@n=\count133
+\c@tkz@gr@ta=\count134
+\c@tkz@gr@tb=\count135
+) (/usr/share/texlive/texmf-dist/tex/latex/tkz-berge/tkz-arith.sty
+Package: tkz-arith 2011/02/28 v 1.00 c integers numbers
+
+(/usr/share/texlive/texmf-dist/tex/latex/tkz-base/tkz-tools-arith.tex
+File: tkz-tool-arith.tex tkz-tool-arith 1.161 d
+))
+\c@tkz@bg@cnt=\count136
+\c@tkza@tmp=\count137
+)
+\c@lecnum=\count138
+\c@theorem=\count139
 
 (./scribe-template.aux)
 \openout1 = `scribe-template.aux'.
@@ -486,17 +534,17 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count127
-\scratchdimen=\dimen171
+\scratchcounter=\count140
+\scratchdimen=\dimen172
 \scratchbox=\box40
-\nofMPsegments=\count128
-\nofMParguments=\count129
-\everyMPshowfont=\toks38
-\MPscratchCnt=\count130
-\MPscratchDim=\dimen172
-\MPnumerator=\count131
-\makeMPintoPDFobject=\count132
-\everyMPtoPDFconversion=\toks39
+\nofMPsegments=\count141
+\nofMParguments=\count142
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count143
+\MPscratchDim=\dimen173
+\MPnumerator=\count144
+\makeMPintoPDFobject=\count145
+\everyMPtoPDFconversion=\toks41
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -626,43 +674,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--220
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--220
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 217--220
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 223--226
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--226
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--234
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 228.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 276.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 246.
-[2] [3] [4] (./scribe-template.aux) ) 
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 294.
+[3] [4] [5] (./scribe-template.aux) ) 
 Here is how much of TeX's memory you used:
- 13216 strings out of 492609
- 261278 string characters out of 6131463
- 307232 words of memory out of 5000000
- 16848 multiletter control sequences out of 15000+600000
+ 14908 strings out of 492609
+ 293044 string characters out of 6131463
+ 353934 words of memory out of 5000000
+ 18506 multiletter control sequences out of 15000+600000
  31319 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,13n,53p,396b,801s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,13n,68p,396b,1237s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/d
 vips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/c
@@ -683,10 +731,10 @@ texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
 tmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on scribe-template.pdf (4 pages, 203714 bytes).
+Output written on scribe-template.pdf (5 pages, 208180 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

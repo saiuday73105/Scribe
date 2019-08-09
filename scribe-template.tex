@@ -21,7 +21,7 @@
 %
 
 \documentclass{article}
-\usepackage{times,amsmath,amsthm,amsfonts,eucal,graphicx,tikz,fixltx2e,mathtools}
+\usepackage{times,amsmath,amsthm,amsfonts,eucal,graphicx,tikz,fixltx2e,mathtools,tkz-berge}
 
 % This scribe template not only uses latex, but also
 % the American Mathematical Society (AMS) latex macros.
@@ -202,10 +202,10 @@ In any graph G, the number of vertices of odd degree is even.
 We know that
 $$ 2|E| = \sum_{v \epsilon V} d(v)$$\\
 $$ \underbrace{2|E|}_\text{\clap{EVEN~}} = 
-\underbracket{\sum_{\substack{v \epsilon V\\d(v) is odd}} d(v)}_\text{\clap{\textbf{1~}}} 
+\underbracket{\sum_{\substack{v \epsilon V\\d(v) is odd}} d(v)}_\text{\clap{\textbf{x~}}} 
 + \underbracket{\sum_{\substack{v \epsilon V\\d(v) is even}} d(v)}_\text{\clap{EVEN~}} $$\\
-\quad For the above equation to satisfy the value of \textbf{1} should be even(i.e. for the LHS 
-to be even sum of terms of RHS should be even, which is only possible when value of \textbf{1}
+\quad For the above equation to satisfy the value of \textbf{x} should be even(i.e. for the LHS 
+to be even sum of terms of RHS should be even, which is only possible when value of \textbf{x}
 is even since the other term is even.)
 \end{proof}
 
@@ -222,8 +222,56 @@ It is represented by $\delta(G)$\\
 \begin{definition}[Maximum degree]
 \quad The degree of the vertex with the most number of edges incident to it 
 (i.e. $max\{d(v) : v \epsilon V\}$) is the maximum degree of G.
-It is represented by $\Delta(G)$\\~\\~\\
+It is represented by $\Delta(G)$\\
 \end{definition}
+
+\begin{definition}[Regular Graph]
+\quad If all the vertices of G have the same degree k then the graph G is called k-regular.\\
+\end{definition}
+
+\textbf{Example:-}\\
+\textbf{(a) 2-Regular Graph}\\
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [below of=1] {4};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (4)
+    (2) edge node [right] {} (1)
+    (3) edge node [right] {} (2)
+    (4) edge node [left] {} (3); 
+\end{tikzpicture}
+\end{center}
+
+\textbf{(b) Petersen's Graph(3-Regular Graph)}\\
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+\grPetersen[form=1,RA=5,RB=3]
+\end{tikzpicture}
+\end{center}
+
+\textbf{(c) 3-Regular Graph}\\
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below left of=1] {2};
+  \node[main node] (3) [below right of=2] {3};
+  \node[main node] (4) [below of=1] {4};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (4)
+    (2) edge node [right] {} (1)
+    (3) edge node [right] {} (2)
+    (4) edge node [left] {} (3);
+\end{tikzpicture}
+\end{center}
 
 \section{Some theorems and stuff} % Don't be this informal in your notes!
 
