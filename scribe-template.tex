@@ -21,7 +21,7 @@
 %
 
 \documentclass{article}
-\usepackage{times,amsmath,amsthm,amsfonts,eucal,graphicx,tikz,fixltx2e,mathtools,tkz-berge}
+\usepackage{times,amsmath,amsthm,amsfonts,eucal,graphicx,tikz,fixltx2e,mathtools,tkz-berge,amssymb}
 
 % This scribe template not only uses latex, but also
 % the American Mathematical Society (AMS) latex macros.
@@ -191,7 +191,7 @@ The sum of the degrees of the vertices of a graph equals twice the number of edg
 
 \begin{proof}
 Each edge contributes two to the sum of the degrees, one for each of its endpoints.
-$$ 2|E| = \sum_{v \epsilon V} d(v)$$\\
+$$ 2|E| = \sum_{v \in V} d(v)$$\\
 \end{proof}
 
 \begin{corollary}
@@ -200,10 +200,10 @@ In any graph G, the number of vertices of odd degree is even.
 
 \begin{proof}
 We know that
-$$ 2|E| = \sum_{v \epsilon V} d(v)$$\\
+$$ 2|E| = \sum_{v \in V} d(v)$$\\
 $$ \underbrace{2|E|}_\text{\clap{EVEN~}} = 
-\underbracket{\sum_{\substack{v \epsilon V\\d(v) is odd}} d(v)}_\text{\clap{\textbf{x~}}} 
-+ \underbracket{\sum_{\substack{v \epsilon V\\d(v) is even}} d(v)}_\text{\clap{EVEN~}} $$\\
+\underbracket{\sum_{\substack{v \in V\\d(v) is odd}} d(v)}_\text{\clap{\textbf{x~}}} 
++ \underbracket{\sum_{\substack{v \in V\\d(v) is even}} d(v)}_\text{\clap{EVEN~}} $$\\
 \quad For the above equation to satisfy the value of \textbf{x} should be even(i.e. for the LHS 
 to be even sum of terms of RHS should be even, which is only possible when value of \textbf{x}
 is even since the other term is even.)
@@ -215,13 +215,13 @@ is even since the other term is even.)
 
 \begin{definition}[Minimum degree]
 \quad The degree of the vertex with the least number of edges incident to it 
-(i.e. $min\{d(v) : v \epsilon V\}$) is the minimum degree of G.
+(i.e. $min\{d(v) : v \in V\}$) is the minimum degree of G.
 It is represented by $\delta(G)$\\
 \end{definition}
 
 \begin{definition}[Maximum degree]
 \quad The degree of the vertex with the most number of edges incident to it 
-(i.e. $max\{d(v) : v \epsilon V\}$) is the maximum degree of G.
+(i.e. $max\{d(v) : v \in V\}$) is the maximum degree of G.
 It is represented by $\Delta(G)$\\
 \end{definition}
 
@@ -257,19 +257,384 @@ It is represented by $\Delta(G)$\\
 
 \textbf{(c) 3-Regular Graph}\\
 \begin{center}
-\begin{tikzpicture}[auto,node distance=3cm,
+\begin{tikzpicture}[auto,node distance=2cm,
                     thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
 
   \node[main node] (1) {1};
   \node[main node] (2) [below left of=1] {2};
-  \node[main node] (3) [below right of=2] {3};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [below right of=3] {4};
+  \node[main node] (5) [above right of=4] {5};
+  \node[main node] (6) [above of=5] {6};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (4)
+    (2) edge node [right] {} (1)
+        edge node {} (6)
+    (3) edge node [right] {} (2)
+        edge node {} (5)
+    (4) edge node [left] {} (3)
+        edge node {} (5)
+    (5) edge node [right] {} (6)
+    (6) edge node [right] {} (1);
+\end{tikzpicture}
+\end{center}
+
+\begin{definition}[Multiple edges]
+Multiple edges are two or more edges that are incident to the same two vertices. 
+Multiple edges are also known as parallel edges
+\end{definition}
+
+\begin{definition}[Self loop]
+A self-loop is an edge that connects a vertex to itself.
+\end{definition}
+
+\textbf{Example:-}\\
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [below of=2] {3};
   \node[main node] (4) [below of=1] {4};
 
   \path[every node/.style={font=\sffamily\small}]
     (1) edge node [left] {} (4)
     (2) edge node [right] {} (1)
+        edge [loop right] node {} (2)
     (3) edge node [right] {} (2)
-    (4) edge node [left] {} (3);
+        edge [bend right] node {} (4)
+    (4) edge [bend right] node {} (3); 
+\end{tikzpicture}
+\end{center}
+
+\begin{definition}[Simple Graph]
+A graph with no self loops and no multiple edges is called a simple graph.
+\end{definition}
+
+\textbf{Note:-}
+In this course unless specified all graphs are simple graphs.\\
+
+\begin{definition}[Subgraphs]
+A graph H is called a subgraph of a graph G, if $V(H)$ $\subseteq$ $V(G)$
+and $E(H)$ $\subseteq$ $E(G)$.
+\end{definition}
+
+\begin{definition}[Induced Subgraph]
+A subgraph H of G is called induced subgraph of G, if for any two vertices 
+$u,v$ $\in$ $H$, if $uv$ $\in$ $E(G)$ then $uv$ $\in$ $E(H)$
+\end{definition}
+
+\textbf{Example:-}\\
+\textbf{(a) Let graph G be }\\
+\begin{center}
+\begin{tikzpicture}[auto,node distance=2cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below left of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (5) [below right of=1] {5};
+  \node[main node] (4) [below of=5] {4};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (5)
+    (2) edge node [right] {} (1)
+    (3) edge node [right] {} (2)
+    (4) edge node [left] {} (3)
+    (5) edge node [right] {} (4)
+        edge node {} (2); 
+\end{tikzpicture}
+\end{center}
+\textbf{Let the below graph be H\textsubscript{1} }\\
+\begin{center}
+\begin{tikzpicture}[auto,node distance=2cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [below of=1] {4};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (4)
+    (2) edge node [right] {} (1)
+    (3) edge node [right] {} (2); 
+\end{tikzpicture}
+\end{center}
+\textbf{Let the below graph be H\textsubscript{2} }\\
+\begin{center}
+\begin{tikzpicture}[auto,node distance=2cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below left of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (5) [below right of=1] {5};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (5)
+    (2) edge node [right] {} (1)
+    (3) edge node [right] {} (2)
+    (5) edge node {} (2);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Note}:- 
+\begin{itemize}
+\item H\textsubscript{1} is a subgraph of G, but not induced because $3,4$ $\in$ $V$ and edge $34$ 
+$\in$ $E(G)$ but $34$ $\notin$ $E(H\textsubscript{1})$.
+\item H\textsubscript{2} is an induced subgraph of G because $\forall$ $u,v$ $\in$ $V$ and edge $uv$ 
+$\in$ $E(G)$ we have $uv$ $\in$ $E(H\textsubscript{2})$.
+\end{itemize}
+
+\textbf{Representation of graphs:}
+\begin{enumerate}
+\item \textbf{Adjacency matrix: } Adjacency matrix of a graph G is nxn matrix, where
+\[ a_{ij} = \left\{ \begin{array}{ll}
+
+	1 & \mbox{if $ij \in E(G)$;} \\
+   0 & \mbox{otherwise;} \\
+	\end{array}
+	\right. \]
+\textbf{Example:-} Let graph G be,
+\begin{center}
+\begin{tikzpicture}[auto,node distance=2cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (2) edge node [right] {} (1)
+    (3) edge node [right] {} (2); 
+\end{tikzpicture}
+\end{center}
+For the given graph the adjacency matrix would look like,
+$$
+\begin{bmatrix}
+0 & 1 & 1 \\
+1 & 0 & 0 \\
+1 & 0 & 0
+\end{bmatrix}\\
+$$
+\item \textbf{Adjacency list: } Adjacency list is a collection of unordered lists 
+used to represent a finite graph. Each list describes the set of neighbors of 
+a vertex in the graph.\\~\\
+The adjacency list of the given graph G is,\\
+$$\fbox{1}\rightarrow\fbox{2}\rightarrow\fbox{3}$$
+$$\fbox{2}\rightarrow\fbox{1}$$
+$$\fbox{3}\rightarrow\fbox{1}$$
+\end{enumerate}
+
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [right of=2] {3};
+  \node[main node] (4) [below of=3] {4};
+  \node[main node] (5) [left of=4] {5};
+  \node[main node] (6) [left of=5] {6};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (6)
+    (2) edge node [right] {} (1)
+    (3) edge node [right] {} (2)
+    (4) edge node [left] {} (3)              %%%%%%%%%%%%%%%%%%%%%%PATH%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    (5) edge node [] {} (4)
+        edge node [] {} (2)
+    (6) edge node [] {} (5)
+        edge node [] {} (2); 
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+  \node[main node] (1) {1}; %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%K1%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2); %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%K2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below left of=1] {2};
+  \node[main node] (3) [below right of=1] {3};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2)
+    (2) edge node [right] {} (3) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%K3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    (3) edge node [right] {} (1); 
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [below of=1] {4};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (4)
+        edge node [] {} (3)
+    (2) edge node [right] {} (1) %%%%%%%%%%%%%%%%%%%%%%%%%%K4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        edge node [] {} (4)
+    (3) edge node [right] {} (2)
+    (4) edge node [left] {} (3); 
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below left of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (5) [below right of=1] {5};
+  \node[main node] (4) [below of=5] {4};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2)
+    (2) edge node [right] {} (3)
+        edge node [] {} (4)
+        edge node [] {} (5)
+    (3) edge node [right] {} (4)
+        edge node [] {} (5)        %%%%%%%%%%%%%%%%%%%%K5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    (4) edge node [left] {} (5)
+    (5) edge node [] {} (1); 
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below right of=1] {2};
+  \node[main node] (3) [below left of=1] {3};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2)
+    (2) edge node [right] {} (3) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%C3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    (3) edge node [right] {} (1); 
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [below of=1] {4};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (4)
+    (2) edge node [right] {} (1)
+    (3) edge node [right] {} (2) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%C4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    (4) edge node [left] {} (3); 
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=2cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below left of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (5) [below right of=1] {5};
+  \node[main node] (4) [below of=5] {4};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2)
+    (2) edge node [right] {} (3)
+    (3) edge node [right] {} (4)      %%%%%%%%%%%%%%%%%%%%C5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    (4) edge node [left] {} (5)
+    (5) edge node [] {} (1); 
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [left of=3] {4};
+  \node[main node] (5) [left of=4] {5};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (3)
+        edge node [] {} (4)
+        edge node [] {} (5)
+    (2) edge node [right] {} (3)
+        edge node [] {} (4)
+        edge node [] {} (5)         %%%%%%%%%%%%%%%%%%K2,3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+    (3) edge node [right] {} (1)
+        edge node [] {} (2)
+    (4) edge node [left] {} (1)
+        edge node [] {} (2)
+    (5) edge node [left] {} (1)
+        edge node [] {} (2);
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[auto,node distance=3cm,
+                    thick,main node/.style={circle,draw,font=\sffamily\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+  \node[main node] (3) [right of=2] {3};
+  \node[main node] (4) [below of=3] {4};
+  \node[main node] (5) [left of=4] {5};
+  \node[main node] (6) [left of=5] {6};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (4)
+        edge node [] {} (5)
+        edge node [] {} (6)
+    (2) edge node [right] {} (4)
+        edge node [] {} (6)
+        edge node [] {} (5)         %%%%%%%%%%%%%%%%%%K2,3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+    (3) edge node [right] {} (4)
+        edge node [] {} (5)
+        edge node [] {} (6)
+    (4) edge node [left] {} (1)
+        edge node [] {} (2)
+        edge node [] {} (3)
+    (5) edge node [left] {} (1)
+        edge node [] {} (2)
+        edge node [] {} (3)
+    (6) edge node [left] {} (1)
+        edge node [] {} (2)
+        edge node [] {} (3);
 \end{tikzpicture}
 \end{center}
 
